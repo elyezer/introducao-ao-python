@@ -36,6 +36,624 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
+				<section>
+					<h1>Introdução ao Python</h1>
+					<p>Por <a href="http://elyezer.com">Elyézer Rezende</a></p>
+				</section>
+
+				<section>
+					<h1>Quem usa Python?</h1>
+					<ul>
+						<li class="fragment"><a href="http://google.com">Google</a></li>
+						<li class="fragment"><a href="http://dropbox.com">Dropbox</a></li>
+						<li class="fragment"><a href="http://globo.com">Globo.com</a></li>
+						<li class="fragment"><a href="http://youtube.com">YouTube</a></li>
+						<li class="fragment"><a href="http://instagram.com">Instagram</a></li>
+						<li class="fragment">Nasa</li>
+						<li class="fragment">FBI</li>
+						<li class="fragment">Governo Federal</li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>Executando códigos Python</h1>
+					<div class="fragment">
+						<p>Utilizando o interpretador</p>
+						<pre><code class="shell">
+$ python
+$ python -m modulo
+$ python arquivo.py
+						</code></pre>
+					</div>
+					<div class="fragment">
+						<p>Como script executável</p>
+						<pre><code class="python">
+#! /usr/bin/env python
+						</code></pre>
+						<p><small>Obs.: O arquivo precisa ter permissão de execução.</small></p>
+					</div>
+				</section>
+
+				<section>
+					<h1>The Zen of Python</h1>
+					<pre><code class="python">
+>>> import this
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>Aprendendo com o Python</h1>
+
+					<pre><code class="python">
+type(obj) # determina o tipo do objeto
+help(list) # documentação de classe ou comando
+help('if') # documentação de um tópico, modulo ou palavra-chave
+dir(list) # lista (quase) todos os atributos de um objeto
+dir() # lista o símbolos do escopo atual
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>Mão na massa</h1>
+
+					<p>Hello World</p>
+					<pre><code class="python">
+print 'Hello World!'
+					</code></pre>
+
+					<div class="fragment">
+						<p>Um pouco além do Hello World</p>
+						<pre><code class="python">
+from datetime import datetime
+from time import sleep
+
+while True:
+    hora = datetime.now()
+    print hora.strftime('%H:%M:%S')
+    sleep(1)
+						</code></pre>
+					</div>
+				</section>
+
+				<section>
+					<h1>Ferramentas de controle de fluxo</h1>
+				</section>
+
+				<section>
+					<h1>Ferramentas de controle de fluxo</h1>
+					<h2>if / elif / else</h2>
+					<pre><code class="python">
+>>> x = 10
+>>> if x < 0:
+...     print 'Menor que zero'
+... elif x > 0:
+...     print 'Maior que zero'
+... else:
+...     print 'Igual a zero'
+...
+Maior que zero
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>Ferramentas de controle de fluxo</h1>
+					<h2>for / else</h2>
+					<pre><code class="python">
+>>> lista = [1, 'item2']
+>>> for item in lista:
+...     print item
+... else:
+...     print 'fim da lista'
+...
+1
+item2
+fim da lista
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>Ferramentas de controle de fluxo</h1>
+					<h2>while / else</h2>
+					<pre><code class="python">
+>>> x = 1
+>>> while x < 5:
+...     print x
+...     x += 1
+... else:
+...     print 5
+...
+1
+2
+3
+4
+5
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>Funções</h1>
+				</section>
+
+				<section>
+					<h1>Funções</h1>
+					<p>Para definir uma função basta utilizar a palavra reservada <em>def</em></p>
+					<pre><code class="python">
+>>> def fib(n): # escreve série de Fibonacci até n
+...     """Exibe série de Fibonacci até n"""
+...     a, b = 0, 1
+...     while a < n:
+...         print a,
+...         a, b = b, a + b
+...
+>>> # Agora invocamos a função que acabamos de definir:
+... fib(2000)
+0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>Funções</h1>
+					<h2>Parâmetros com valores default</h2>
+					<pre><code class="python">
+>>> def print_nome(nome, sobrenome=''):
+...     print nome, sobrenome
+...
+>>> print_nome()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: print_nome() takes at least 1 argument (0 given)
+>>> print_nome(u'Elyézer')
+Elyézer
+>>> print_nome(u'Elyézer', u'Rezende')
+Elyézer Rezende					</code></pre>
+				</section>
+
+				<section>
+					<h1>Funções</h1>
+					<h2>Argumentos nomeados</h2>
+					<pre><code class="python">
+>>> def print_usuario(nome, sobrenome='', idade=''):
+...     print nome, sobrenome, idade
+...
+>>> print_usuario()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: print_usuario() takes at least 1 argument (0 given)
+>>> print_usuario(u'Elyézer')
+Elyézer
+>>> print_usuario(u'Elyézer', idade=25)
+Elyézer  25
+>>> print_usuario(u'Elyézer', idade=25, sobrenome=u'Rezende')
+Elyézer Rezende 25
+>>> print_usuario(u'Elyézer', u'Rezende', 25)
+Elyézer Rezende 25
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>Funções</h1>
+					<h2>Funções com número arbitrário de argumentos</h2>
+					<pre><code class="python">
+>>> def print_items(*args):
+...     for item in args:
+...             print item
+...
+>>> print_items()
+>>> print_items(1)
+1
+>>> print_items(1, 2)
+1
+2
+>>> print_items(numero=10)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: print_items() got an unexpected keyword argument 'numero'
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>Funções</h1>
+					<h2>Funções anônimas</h2>
+					<pre><code class="python">
+>>> def fazer_incrementador(n):
+...     return lambda x: x + n
+...
+>>> incrementador = fazer_incrementador(42)
+>>> incrementador(0)
+42
+>>> incrementador(1)
+43
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>Funções</h1>
+					<h2>Docstrings</h2>
+					<pre><code class="python">
+>>> def funcao():
+...     """Não faz nada, mas é documentada.
+...
+...     Realmente não faz nada
+...     """
+...     pass
+...
+>>> print funcao.__doc__
+Não faz nada, mas é documentada.
+
+	Realmente não faz nada
+
+>>> help(funcao)
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>Tipos de dados básicos</h1>
+
+					<ul>
+						<li>Números: int, long*, float, complex</li>
+						<li>Strings: str* e unicode*</li>
+						<li>Listas e tuplas: list, tuple</li>
+						<li>Dicionário: dict</li>
+						<li>Aquivos: file</li>
+						<li>Booleanos: bool (True, False)</li>
+						<li>Conjuntos: set, frozenset</li>
+						<li>None</li>
+					</ul>
+					<p>* Existe diferença entre as versões 2 e 3 do Python</p>
+				</section>
+
+				<section>
+					<h1>Listas</h1>
+				</section>
+
+				<section>
+					<h1>Listas</h1>
+					<h2>Fatiando as listas</h2>
+					<pre><code class="python">
+>>> lista = range(10)
+>>> lista
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> lista[1:]
+[1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> lista[:5]
+[0, 1, 2, 3, 4]
+>>> lista[2:5]
+[2, 3, 4]
+>>> lista[:]
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> lista[:-1]
+[0, 1, 2, 3, 4, 5, 6, 7, 8]
+					</code></pre>
+				</section>
+
+
+				<section>
+					<h1>Listas</h1>
+					<h2>List comprehensions</h2>
+					<p>O código abaixo:</p>
+					<pre><code class="python">
+>>> quadrados = []
+>>> for x in range(10):
+...     quadrados.append(x**2)
+...
+>>> quadrados
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+					</code></pre>
+					<p>É equivalente ao seguinte código:</p>
+					<pre><code class="python">
+quadrados = [x**2 for x in range(10)]
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>Listas</h1>
+					<h2>List comprehensions com filtro</h2>
+					<pre><code class="python">
+>>> lista = range(1, 21)
+>>> lista
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+>>> [n for n in lista if n % 2 == 0]
+[2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+					</code></pre>
+					<p>Utilizando operador ternário</p>
+					<pre><code class="python">
+>>> [n + 1 if n % 2 == 0 else n - 1 for n in lista]
+[0, 3, 2, 5, 4, 7, 6, 9, 8, 11, 10, 13, 12, 15, 14, 17, 16, 19, 18, 21]
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>Listas</h1>
+					<h2>List comprehensions aninhadas</h2>
+					<p>Dado a matriz:</p>
+					<pre><code class="python">
+>>> matriz = [
+...     [1, 2, 3, 4],
+...     [5, 6, 7, 8],
+...     [9, 10, 11, 12],
+... ]
+					</code></pre>
+					<p>A matriz transposta pode ser obtida utilizando:</p>
+					<pre><code class="python">
+>>> [[linha[i] for linha in matriz] for i in range(len(matriz[0]))]
+[[1, 5, 9], [2, 6, 10], [3, 7, 11], [4, 8, 12]]
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>Técnicas de iteração</h1>
+				</section>
+
+				<section>
+					<h1>Técnicas de iteração</h1>
+					<h2>Iterando sobre as chaves de um dicionário</h2>
+					<pre><code class="python">
+>>> usuario = {
+...     'nome': u'Elyézer',
+...     'sobrenome': u'Rezende',
+...     'idade': 25
+... }
+>>> for k in usuario:
+...     print k
+...
+idade
+sobrenome
+nome
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>Técnicas de iteração</h1>
+					<h2>Iterando sobre as chaves e valores de um dicionário</h2>
+					<pre><code class="python">
+>>> usuario = {
+...     'nome': u'Elyézer',
+...     'sobrenome': u'Rezende',
+...     'idade': 25
+... }
+>>> for k, v in usuario.iteritems():
+...     print '%s: %s' % (k, v)
+...
+idade: 25
+sobrenome: Rezende
+nome: Elyézer
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>Técnicas de iteração</h1>
+					<h2>Iterando sobre uma sequência utilizando índice</h2>
+					<pre><code class="python">
+>>> for i, v in enumerate(['tic', 'tac', 'toe']):
+...     print i, v
+...
+0 tic
+1 tac
+2 toe
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>Técnicas de iteração</h1>
+					<h2>Iterando sobre duas sequências simultaneamente</h2>
+					<pre><code class="python">
+>>> questions = ['name', 'quest', 'favorite color']
+>>> answers = ['lancelot', 'the holy grail', 'blue']
+>>> for q, a in zip(questions, answers):
+...     print 'What is your {0}?  It is {1}.'.format(q, a)
+...
+What is your name?  It is lancelot.
+What is your quest?  It is the holy grail.
+What is your favorite color?  It is blue.
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>Técnicas de iteração</h1>
+					<h2>Iterando sobre uma sequência em ordem inversa</h2>
+					<pre><code class="python">
+>>> for i in reversed(xrange(1, 10, 2)):
+...     print i
+...
+9
+7
+5
+3
+1
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>Técnicas de iteração</h1>
+					<h2>Iterando sobre uma sequência de maneira ordenada</h2>
+					<pre><code class="python">
+>>> cesta = ['uva', 'laranja', 'uva', 'abacaxi']
+>>> for fruta in sorted(cesta):
+...     print fruta
+...
+abacaxi
+laranja
+uva
+uva
+>>> for fruta in sorted(set(cesta)):  # sem duplicações
+...     print fruta
+...
+abacaxi
+laranja
+uva
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>Módulos</h1>
+				</section>
+
+				<section>
+					<h1>Módulos</h1>
+					<ul>
+						<li>Um módulo é um arquivo Python contendo definições e instruções.</li>
+						<li>O nome do arquivo é o módulo com o sufixo .py adicionado.</li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>Módulos</h1>
+					<h2>Importando um módulo</h2>
+					<pre><code class="python">
+>>> import modulo
+>>> modulo.funcao()
+função do módulo
+>>> modulo.var
+10
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>Módulos</h1>
+					<h2>Importando definições ou instruções de um módulo</h2>
+					<pre><code class="python">
+>>> from modulo import funcao, var
+>>> funcao()
+função do módulo
+>>> var
+10
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>Módulos</h1>
+					<h2>Executando módulos como scripts</h2>
+					<p>Ao executar o módulo dessa forma:</p>
+					<pre><code class="shell">
+$ python modulo.py &lt;argumentos&gt;
+					</pre></code>
+					<p>O código no módulo será executado, da mesma forma como você estivesse apenas importado, mas com a variável global <em>__name__</em> com o valor <em>"__main__"</em>.</p>
+					<pre><code>
+if __name__ == "__main__":
+    print "executando"
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>Módulos</h1>
+					<h2>Pacotes</h2>
+					<ul>
+						<li>Pacotes são uma maneira de estruturar espaços de nomes para módulos Python utilizando a sintaxe de “nomes pontuados” (dotted names).</li>
+						<li>O uso de pacotes permite que os autores de pacotes com muitos módulos.</li>
+						<li>Arquivos <em>__init__.py</em> são necessários para que Python trate os diretórios como pacotes.</li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>Exceções</h1>
+				</section>
+
+
+				<section>
+					<h1>Exceções</h1>
+					<h2>Tratamento de exceções</h2>
+					<pre><code class="python">
+>>> def divide(x, y):
+...     try:
+...         resultado = x / y
+...     except ZeroDivisionError:
+...         print "divisão por zero!"
+...     else:
+...         print "resultado é", resultado
+...     finally:
+...         print "executando a cláusula finally"
+...
+>>> divide(2, 1)
+resultado é 2
+executando a cláusula finally
+>>> divide(2, 0)
+divisão por zero!
+executando a cláusula finally
+>>> divide("2", "1")
+executando a cláusula finally
+Traceback (most recent call last):
+  File "<stdin>", line 1, in ?
+  File "<stdin>", line 3, in divide
+TypeError: unsupported operand type(s) for /: 'str' and 'str'
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>Exceções</h1>
+					<h2>Lançando exceções</h2>
+					<pre><code class="python">
+>>> raise NameError('HiThere')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in ?
+NameError: HiThere
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>Exemplos de aplicações</h1>
+				</section>
+
+				<section>
+					<h1>Twitter client</h1>
+					<pre><code class="python">
+import urllib.request
+import json
+
+def busca_tweets(texto='python'):
+  url = 'http://search.twitter.com/search.json?q=' + texto
+  resp = urllib.request.urlopen(url).read()
+  data = json.loads(resp.decode('utf-8'))
+  return data['results']
+
+def print_tweets(tweets):
+  for t in tweets:
+    print t['from_user'] + ': ' + t['text'] + '\n'
+
+resultados = busca_tweets()
+print_tweets(resultados)
+					</code></pre>
+					<p><small>Fonte: <a href="https://gist.github.com/fmasanori/4666428">https://gist.github.com/fmasanori/4666428</a></small></p>
+				</section>
+
+				<section>
+					<h1>Twitter profile photo</h1>
+					<pre><code class="python">
+import urllib.request
+import json
+
+url = 'https://api.twitter.com/1/users/profile_image?screen_name='
+user = 'fmasanori'
+size = '&size=bigger'
+
+resp = urllib.request.urlopen(url+user+size).read()
+
+arquivo = 'Foto perfil '+user+'.jpg'
+f = open(arquivo, 'wb')
+f.write(resp)
+f.close()
+
+print arquivo, 'gravado no diretório atual...'
+					</code></pre>
+					<p><small>Fonte: <a href="https://gist.github.com/fmasanori/4666602">https://gist.github.com/fmasanori/4666602</a></small></p>
+				</section>
+
+				<section>
+					<h1>Onde encontrar mais informações?</h1>
+					<ul>
+						<li><a href="http://turing.com.br/pydoc/2.7/tutorial/index.html">Tutorial em português</a></li>
+						<li><a href="http://www.python.org.br">Comunidade Brasileira</a></li>
+						<li><a href="http://docs.python.org/2/">Documentação oficial do Python 2</a></li>
+						<li><a href="http://docs.python.org/3/">Documentação oficial do Python 3</a></li>
+						<li><a href="http://www.slideshare.net/ramalho/introduo-a-linguagem-python">Introdução a linguagem Python</a></li>
+						<li><a href="http://www.slideshare.net/ramalho/python-a-primeira-mordida-presentation">Python: a primeira mordida</a></li>
+						<li><a href="http://www.slideshare.net/fmasanori/hackeando-o-facebook-e-o-twitter-com-python-3-campus-party-2013">Hackeando o Facebook e o Twitter com Python 3</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>Obrigado!</h1>
+				</section>
+
 			</div>
 
 		</div>
